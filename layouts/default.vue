@@ -49,6 +49,11 @@ export default {
    --red: #D71B14;
 }
 
+::selection {
+  background: #D71B14;
+  color: #fff;
+}
+
 html {
   font-size: 16px;
   word-spacing: 1px;

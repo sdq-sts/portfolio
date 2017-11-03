@@ -1,11 +1,13 @@
 <template>
   <div class="home-page">
     <page-header/>
+    <site-projects/>
   </div>
 </template>
 
 <script>
 import PageHeader from '~/components/home/PageHeader'
+import SiteProjects from '~/components/home/projects/SiteProjects'
 
 export default {
   data () {
@@ -23,7 +25,8 @@ export default {
   },
 
   components: {
-    PageHeader
+    PageHeader,
+    SiteProjects
   },
 
   head: {
