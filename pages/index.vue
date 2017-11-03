@@ -1,15 +1,11 @@
 <template>
   <div class="home-page">
-    <div class="links">
-      <nuxt-link to="/contato">Contato</nuxt-link>
-      <nuxt-link to="/sobre">Sobre</nuxt-link>
-    </div>
+    <page-header/>
   </div>
 </template>
 
 <script>
-import SiteLogo from '~/components/common/SiteLogo.vue'
-import HomeVideo from '~/components/home/Video'
+import PageHeader from '~/components/home/PageHeader'
 
 export default {
   data () {
@@ -27,8 +23,16 @@ export default {
   },
 
   components: {
-    SiteLogo,
-    HomeVideo
+    PageHeader
+  },
+
+  head: {
+    title: 'Sadraque Santos | Desenvolvedor front-end',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Meta description' }
+    ]
   }
 }
 </script>

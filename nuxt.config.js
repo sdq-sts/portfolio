@@ -9,10 +9,13 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      { 'http-equiv': 'content-language', content: 'pt-br' },
+      { hid: 'description', name: 'description', content: 'Sadraque Santos' },
+      { name: 'author', content: 'Sadraque Santos' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:400,700,900|Six+Caps' }
     ]
   },
   /*
