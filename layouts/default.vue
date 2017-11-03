@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="slide">
-      <home-video v-if="isIndex"/>
+      <site-video v-if="isIndex"/>
     </transition>
     <b-container>
       <site-logo/>
@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import SiteLogo from '~/components/common/SiteLogo.vue'
-import HomeVideo from '~/components/home/Video'
+import SiteLogo from '~/components/common/SiteLogo'
+import SiteVideo from '~/components/home/SiteVideo'
 
 export default {
   data () {
@@ -39,7 +39,7 @@ export default {
 
   components: {
     SiteLogo,
-    HomeVideo
+    SiteVideo
   }
 }
 </script>
@@ -49,9 +49,14 @@ export default {
    --red: #D71B14;
 }
 
-::selection {
-  background: #D71B14;
+::-moz-selection {
   color: #fff;
+  background: #D71B14;
+}
+
+::selection {
+  color: #fff;
+  background: #D71B14;
 }
 
 html {

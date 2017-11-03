@@ -1,6 +1,6 @@
 <template>
   <section class="projects">
-    <b-row no-gutters>
+    <b-row>
       <b-col class="projects-title">
         <h1>Projetos</h1>
       </b-col>
