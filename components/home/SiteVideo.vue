@@ -16,7 +16,7 @@
   position: absolute;
   right: 0;
   top: 0;
-  height: 45em;
+  height: 40em;
   overflow: hidden;
   filter: grayscale(100%);
 }

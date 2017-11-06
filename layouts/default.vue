@@ -1,9 +1,14 @@
 <template>
   <div>
-    <transition name="slide">
+    <transition name="slide" mode="out-in">
       <site-video v-if="isIndex"/>
     </transition>
     <b-container>
+
+      <transition name="grow" mode="out-in">
+        <vertical-red-bar v-if="isIndex"/>
+      </transition>
+
       <site-logo/>
       <nuxt/>
     </b-container>
@@ -11,6 +16,7 @@
 </template>
 
 <script>
+import VerticalRedBar from '~/components/common/VerticalRedBar'
 import SiteLogo from '~/components/common/SiteLogo'
 import SiteVideo from '~/components/home/SiteVideo'
 
@@ -38,6 +44,7 @@ export default {
   },
 
   components: {
+    VerticalRedBar,
     SiteLogo,
     SiteVideo
   }
@@ -77,10 +84,28 @@ html {
 }
 
 .slide-enter-active, .slide-leave-active {
-  transition: all .5s ease-out;
+  transition: all .5s ease-in-out;
 }
 .slide-enter, .slide-leave-to {
   opacity: 0;
   transform: translateX(101%);
+}
+
+.grow-enter-active, .grow-leave-active {
+  transition: all .5s ease-in-out;
+}
+
+.grow-leave-active {
+  transition: all .35s ease-in-out;
+}
+
+.grow-enter-active {
+  transition: all .5s ease-in-out;
+  transition-delay: .35s;
+}
+
+.grow-enter, .grow-leave-to {
+  opacity: 0;
+  transform: translateY(-3em);
 }
 </style>

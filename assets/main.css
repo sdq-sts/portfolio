@@ -1,6 +1,38 @@
+:root {
+  --red: #D71B14;
+}
+
+::-moz-selection {
+ color: #fff;
+ background: #D71B14;
+}
+
+::selection {
+ color: #fff;
+ background: #D71B14;
+}
+
+html {
+ font-size: 16px;
+ word-spacing: 1px;
+ -ms-text-size-adjust: 100%;
+ -webkit-text-size-adjust: 100%;
+ -moz-osx-font-smoothing: grayscale;
+ -webkit-font-smoothing: antialiased;
+ box-sizing: border-box;
+ overflow-x: hidden;
+ font-family: 'Lato', sans-serif;
+}
+
+*, *:before, *:after {
+ box-sizing: border-box;
+ margin: 0;
+}
+
 .page-enter-active, .page-leave-active {
-  transition: opacity .5s
+  transition: opacity .5s;
 }
 .page-enter, .page-leave-active {
-  opacity: 0
+  opacity: 0;
 }
+

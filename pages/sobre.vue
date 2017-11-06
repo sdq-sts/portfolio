@@ -20,5 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.about-page {
+  min-height: 150vh;
+}
 </style>

@@ -20,5 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.contact-page {
+  min-height: 150vh;
+}
 </style>

@@ -12,7 +12,7 @@
              cols="12" offset="0" 
              v-for="(project, index) in projects" :key="index">
         <div class="project">
-          <div class="project__overlay project-overlay">
+          <div class="project__overlay project-overlay" @click="openDetails">
             <h2 class="project-overlay__title">{{ project.name }}</h2>
           </div>  
           <div class="project__thumb">
@@ -34,10 +34,16 @@ export default {
   data () {
     return {
       projects: [
-        { name: 'Wanderlust', thumbSrc: WanderlustThumb, alt: 'Site Wanderlust' },
-        { name: 'In time . Droeloe', thumbSrc: InTimeThumb, alt: 'Site In Time' },
-        { name: 'Dota Quotes', thumbSrc: DotaQuotesThumb, alt: 'Site Dota Quotes' }
+        { name: 'Wanderlust', thumbSrc: WanderlustThumb, alt: 'Site Wanderlust', detailsLink: '/projetos/wanderlust' },
+        { name: 'In time . Droeloe', thumbSrc: InTimeThumb, alt: 'Site In Time', detailsLink: '/projetos/in-time' },
+        { name: 'Dota Quotes', thumbSrc: DotaQuotesThumb, alt: 'Site Dota Quotes', detailsLink: '/projetos/dota-quotes' }
       ]
+    }
+  },
+
+  methods: {
+    openDetails () {
+      console.log('kkk')
     }
   }
 }
@@ -45,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 .projects {
-  margin-top: 20em;
+  margin-top: 15em;
 }
 
 .projects-title {
@@ -82,6 +88,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
   cursor: pointer;
 
   &__title {
