@@ -66,6 +66,6 @@ module.exports = {
   ** Load Modules
   */
   modules: [
-    '@nuxtjs/bootstrap-vue'
+    // '@nuxtjs/bootstrap-vue'
   ]
 }
