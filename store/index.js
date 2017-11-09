@@ -3,7 +3,8 @@ import Vuex from 'vuex'
 const store = () => {
   return new Vuex.Store({
     state: {
-      route: null
+      route: null,
+      bodyHasVScrollBar: true
     }
   })
 }

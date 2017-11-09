@@ -53,7 +53,7 @@ module.exports = {
   /*
   ** Custom CSS
   */
-  css: ['~/assets/main.css'],
+  css: [{src:'~/assets/main.scss', lang: 'scss'}],
 
   /*
   ** Plugins

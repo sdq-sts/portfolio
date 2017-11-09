@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div class="home-content">
     <page-header/>
     <site-projects/>
     <page-footer/>
@@ -19,11 +19,21 @@ export default {
   watch: {
     '$route' (to, from) {
       this.$store.state.route = to.name
+      this.updateScrollBarState()
+    }
+  },
+
+  methods: {
+    updateScrollBarState () {
+      this.$store.state.bodyHasVScrollBar = this.container.scrollHeight > window.innerHeight
+      console.log(this.$store.state.bodyHasVScrollBar)
     }
   },
 
   mounted () {
+    this.container = document.querySelector('.container')
     this.$store.state.route = this.$route.name
+    this.updateScrollBarState()
   },
 
   components: {
@@ -32,13 +42,18 @@ export default {
     PageFooter
   },
 
-  head: {
-    title: 'Sadraque Santos | Desenvolvedor front-end',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Meta description' }
-    ]
+  head () {
+    return {
+      title: 'Sadraque Santos | Desenvolvedor front-end',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'Meta description' }
+      ],
+      bodyAttrs: {
+        class: !this.$store.state.bodyHasVScrollBar ? 'home-page add-right-gap' : 'home-page'
+      }
+    }
   }
 }
 </script>

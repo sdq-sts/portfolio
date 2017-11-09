@@ -4,7 +4,6 @@
       <site-video v-if="isIndex"/>
     </transition>
     <b-container>
-
       <transition name="grow" mode="out-in">
         <vertical-red-bar v-if="isIndex"/>
       </transition>
@@ -35,12 +34,26 @@ export default {
       } else {
         this.isIndex = false
       }
+
+      this.updateScrollBarState()
+    }
+  },
+
+  methods: {
+    updateScrollBarState () {
+      this.$store.state.bodyHasVScrollBar = this.container.scrollHeight > window.innerHeight
     }
   },
 
   mounted () {
+    this.container = document.querySelector('.container')
+
     this.$store.state.route = this.$route.name
     this.isIndex = this.$route.name === 'index'
+
+    this.updateScrollBarState()
+
+    window.addEventListener('resize', this.updateScrollBarState)
   },
 
   components: {
