@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-form">
+  <div class="contact-form" @keyup="showOrHideSubmitBtn">
     <b-form v-on:submit.prevent="submitForm">
       <b-row class="upper-form">
         <b-col>
@@ -33,12 +33,19 @@
         </b-col>
       </b-row>
 
-      <b-row align-v="center">
+      <b-row align-v="center" class="form-footer">
         <b-col cols="8">
-          <p class="form-sumited-message">{{ errorMessage }}</p>
+          <transition name="submit-msg">
+            <p class="form-sumited-message"
+              v-show="submited"
+              :class="{ error: (submitMessageClass === 'error'), success: (submitMessageClass === 'success') }"
+            >{{ submitedMessage }}</p>
+          </transition>
         </b-col>
         <b-col cols="2" offset="2">
-          <input type="submit" value="enviar" class="submit-input">
+          <transition name="submit-btn">
+            <input v-show="showSubmitBtn" type="submit" value="enviar" class="submit-input">
+          </transition>
         </b-col>
       </b-row>
 
@@ -55,8 +62,12 @@ export default {
       formName: '',
       formEmail: '',
       formMessage: '',
+      showSubmitBtn: false,
       successMessage: 'Sua mensagem foi enviada com sucesso',
-      errorMessage: 'Houve um erro e sua mensagem não pode ser enviada'
+      errorMessage: 'Houve um erro e sua mensagem não pode ser enviada',
+      submitedMessage: '',
+      submitMessageClass: '',
+      submited: false
     }
   },
 
@@ -71,12 +82,37 @@ export default {
       }
     },
 
+    showOrHideSubmitBtn () {
+      if (this.formName && this.formEmail && this.formMessage) {
+        this.showSubmitBtn = true
+      } else {
+        this.showSubmitBtn = false
+      }
+    },
+
+    handleSubmitedForm (cl, msg) {
+      this.submited = true
+      this.submitMessageClass = cl
+      this.submitedMessage = msg
+
+      if (cl === 'success') {
+        this.formName = ''
+        this.formEmail = ''
+        this.formMessage = ''
+        this.showSubmitBtn = false
+      }
+    },
+
     submitForm () {
       axios.post('https://formspree.io/oi@sadraque.com.br', {
-        message: `Name: ${this.formName}\n\nEmail: ${this.formEmail}\n\nMensagem:\n\t${this.formMessage}`
+        message: `Nome: ${this.formName}\n\nEmail: ${this.formEmail}\n\nMensagem:\n\t${this.formMessage}`
       })
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        .then((res) => {
+          this.handleSubmitedForm('success', this.successMessage, res)
+        })
+        .catch((err) => {
+          this.handleSubmitedForm('error', this.errorMessage, err)
+        })
     }
   }
 }
@@ -171,13 +207,52 @@ input[type="email"] {
   }
 }
 
+.form-footer {
+  margin-top: 1em;
+}
+
 .submit-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: block;
   width: 100%;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: right;
+  text-transform: uppercase;
+  padding: 0;
 }
 
 .form-sumited-message {
   font-size: .8em;
   margin: auto;
+
+  &.error {
+    color: #D71B14;
+  }
+
+  &.success {
+    color: #C1C1C1;
+  }
+}
+
+.submit-btn-enter-active, .submit-btn-leave-active {
+  transition: all .5s;
+}
+.submit-btn-enter, .submit-btn-leave-active {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+
+.submit-msg-enter-active, .submit-msg-leave-active {
+  transition: all .5s;
+}
+.submit-msg-enter, .submit-msg-leave-active {
+  opacity: 0;
+  transform: translateY(15px);
 }
 
 </style>

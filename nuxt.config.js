@@ -5,6 +5,9 @@ module.exports = {
   ** Headers of the page
   */
   head: {
+    htmlAttrs: {
+      lang: 'pt-br',
+    },
     title: 'portfolio-sadraque',
     meta: [
       { charset: 'utf-8' },
@@ -60,12 +63,5 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/globals.js' }
-  ],
-
-  /*
-  ** Load Modules
-  */
-  modules: [
-    // '@nuxtjs/bootstrap-vue'
   ]
 }
