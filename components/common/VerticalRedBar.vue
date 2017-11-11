@@ -1,8 +1,6 @@
 <template>
   <div class="x">
-    <!-- <transition name="grow"> -->
-      <div class="vertical-bar"></div>
-    <!-- </transition> -->
+    <div class="vertical-bar"></div>
   </div>
 </template>
 

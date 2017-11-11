@@ -43,8 +43,8 @@ module.exports = {
           exclude: /(node_modules)/
         })
       } else {
-        config.externals = [ nodeExternals({
-          whitelist: [/\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/]
+        config.externals = [
+          nodeExternals({ whitelist: [/\.(?!(?:js|json)$).{1,5}$/i, /^vue-awesome/]
         })]
       }
     }

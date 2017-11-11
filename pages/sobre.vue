@@ -45,7 +45,6 @@ export default {
   methods: {
     updateScrollBarState () {
       this.$store.state.bodyHasVScrollBar = this.container.scrollHeight > window.innerHeight
-      console.log(this.$store.state.bodyHasVScrollBar)
     }
   },
 
@@ -82,6 +81,11 @@ export default {
   text-transform: uppercase;
   font-size: .75em;
   letter-spacing: 2px;
+  margin-top: 5em;
+
+  .fa-icon {
+    margin-left: .5em;
+  }
 
   a {
     display: flex;
@@ -90,9 +94,5 @@ export default {
     color: #000;
     font-weight: 600;
   }
-}
-
-.link-to-home {
-  margin-top: 5em;
 }
 </style>

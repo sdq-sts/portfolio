@@ -26,7 +26,6 @@ export default {
   methods: {
     updateScrollBarState () {
       this.$store.state.bodyHasVScrollBar = this.container.scrollHeight > window.innerHeight
-      console.log(this.$store.state.bodyHasVScrollBar)
     }
   },
 

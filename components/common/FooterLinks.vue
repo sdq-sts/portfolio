@@ -43,23 +43,6 @@ a {
   justify-content: space-between;
 }
 
-.link {
-  // display: inline;
-  // align-items: center;
-
-  &.left {
-    // align-self: start;
-  }
-
-  &.center {
-    // margin: 0 auto;
-  }
-
-  &.right {
-    // align-self: end;
-  }
-}
-
 .link-name {
   margin-left: .25em;
   text-transform: uppercase;

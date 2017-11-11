@@ -12,7 +12,7 @@
 
 <style lang="scss" scoped>
 .site-logo {
-margin: 3em 0 0;
+  margin: 3em 0 0;
 }
 
 .logo-link {
