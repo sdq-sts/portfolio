@@ -18,6 +18,8 @@
           <div class="project__thumb">
             <img :src="project.thumbSrc" :alt="project.alt">
           </div>
+
+          <project-details v-if="showProjectDetails"/>
         </div>
       </b-col>
 
@@ -33,6 +35,7 @@ import DotaQuotesThumb from '~/assets/projects/dota-quotes-thumb.jpg'
 export default {
   data () {
     return {
+      showProjectDetails: false,
       projects: [
         { name: 'Wanderlust', thumbSrc: WanderlustThumb, alt: 'Site Wanderlust', detailsLink: '/projetos/wanderlust' },
         { name: 'In time . Droeloe', thumbSrc: InTimeThumb, alt: 'Site In Time', detailsLink: '/projetos/in-time' },
@@ -43,7 +46,9 @@ export default {
 
   methods: {
     openDetails () {
-      console.log('kkk')
+      let htmlStyle = document.documentElement.style
+      htmlStyle.overflowY = 'hidden'
+      this.$store.state.showProjectDetails = true
     }
   }
 }

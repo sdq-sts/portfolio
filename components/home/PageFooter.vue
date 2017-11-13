@@ -5,7 +5,7 @@
         <div class="name-year">sdq sts &nbsp;&nbsp; . &nbsp;&nbsp; {{ year }}</div>
       </b-col>
       <b-col cols="2">
-        <div class="scroll-top">UP</div>
+        <a class="scroll-top" href="#top" v-smooth-scroll>UP</a>
       </b-col>
       <b-col cols="5">
         <div class="github-link"><a href="https://github.com/sdq-sts" target="_blank">Github</a></div>
@@ -55,6 +55,8 @@ export default {
   font-size: 1.4em;
   font-weight: 900;
   transform: rotate(-90deg);
+  display: block;
+  text-decoration: none;
 
   &:before {
     content: '';

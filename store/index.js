@@ -5,7 +5,8 @@ const store = () => {
     state: {
       route: null,
       bodyHasVScrollBar: true,
-      showRedBar: true
+      showRedBar: true,
+      showProjectDetails: false
     }
   })
 }

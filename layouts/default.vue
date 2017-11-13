@@ -3,18 +3,16 @@
     <transition name="slide" mode="out-in">
       <site-video v-if="isIndex"/>
     </transition>
-    <b-container class="main-container">
+    <b-container class="main-container" id="top">
       <transition-group name="grow" mode="out-in">
         <vertical-red-bar v-if="isIndex" :class="{ middle: isIndex }" :key="'index-bar'"/>
         <vertical-red-bar v-else-if="!isIndex && isMounted" :class="{ right: !isIndex }" :key="'not-index-bar'"/>
       </transition-group>
 
-      <transition name="grow" mode="out-in">
-      </transition>
-
       <site-logo/>
       <nuxt/>
     </b-container>
+    <project-details v-if="getProjectDetailsState()"/>
   </div>
 </template>
 
@@ -22,6 +20,7 @@
 import VerticalRedBar from '~/components/common/VerticalRedBar'
 import SiteLogo from '~/components/common/SiteLogo'
 import SiteVideo from '~/components/home/SiteVideo'
+import ProjectDetails from '~/components/home/ProjectDetails'
 
 export default {
   data () {
@@ -41,13 +40,16 @@ export default {
       }
 
       this.updateScrollBarState()
-      console.log(this.isIndex)
     }
   },
 
   methods: {
     updateScrollBarState () {
       this.$store.state.bodyHasVScrollBar = this.container.scrollHeight > window.innerHeight
+    },
+
+    getProjectDetailsState () {
+      return this.$store.state.showProjectDetails
     }
   },
 
@@ -66,7 +68,8 @@ export default {
   components: {
     VerticalRedBar,
     SiteLogo,
-    SiteVideo
+    SiteVideo,
+    ProjectDetails
   }
 }
 </script>

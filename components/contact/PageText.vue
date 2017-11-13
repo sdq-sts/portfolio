@@ -24,5 +24,6 @@ export default {
 .page-text {
   line-height: 2;
   font-size: 1.2em;
+  font-family: "Lato", sans-serif;
 }
 </style>

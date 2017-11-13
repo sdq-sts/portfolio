@@ -152,6 +152,7 @@ input[type="email"] {
   border: none;
   z-index: 1;
   display: block;
+  font-family: "Lato", sans-serif;
 
   &:focus {
     outline: none;
@@ -168,6 +169,7 @@ input[type="email"] {
   border: none;
   border: 3px solid #D71B14;
   padding: 2em;
+  font-family: "Lato", sans-serif;
 
   &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     text-transform: uppercase;
@@ -243,16 +245,16 @@ input[type="email"] {
   transition: all .5s;
 }
 .submit-btn-enter, .submit-btn-leave-active {
-  opacity: 0;
   transform: translateX(-15px);
+  opacity: 0;
 }
 
 .submit-msg-enter-active, .submit-msg-leave-active {
   transition: all .5s;
 }
 .submit-msg-enter, .submit-msg-leave-active {
-  opacity: 0;
   transform: translateY(15px);
+  opacity: 0;
 }
 
 </style>

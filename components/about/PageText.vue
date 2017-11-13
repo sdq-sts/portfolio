@@ -27,6 +27,7 @@ export default {
 .about-text {
   margin-bottom: 4em;
   font-size: 1.1em;
-  line-height: 1.5;
+  line-height: 1.75;
+  font-family: "Lato", sans-serif;
 }
 </style>
