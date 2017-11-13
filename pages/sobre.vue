@@ -48,10 +48,6 @@ export default {
     }
   },
 
-  beforeMount () {
-    console.log('BEFORE MOUNT')
-  },
-
   mounted () {
     this.container = document.querySelector('.container')
     this.$store.state.route = this.$route.name

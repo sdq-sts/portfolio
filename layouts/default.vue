@@ -3,9 +3,13 @@
     <transition name="slide" mode="out-in">
       <site-video v-if="isIndex"/>
     </transition>
-    <b-container>
+    <b-container class="main-container">
+      <transition-group name="grow" mode="out-in">
+        <vertical-red-bar v-if="isIndex" :class="{ middle: isIndex }" :key="'index-bar'"/>
+        <vertical-red-bar v-else-if="!isIndex && isMounted" :class="{ right: !isIndex }" :key="'not-index-bar'"/>
+      </transition-group>
+
       <transition name="grow" mode="out-in">
-        <vertical-red-bar v-if="isIndex"/>
       </transition>
 
       <site-logo/>
@@ -22,7 +26,8 @@ import SiteVideo from '~/components/home/SiteVideo'
 export default {
   data () {
     return {
-      isIndex: false
+      isIndex: false,
+      isMounted: false
     }
   },
 
@@ -36,6 +41,7 @@ export default {
       }
 
       this.updateScrollBarState()
+      console.log(this.isIndex)
     }
   },
 
@@ -54,6 +60,7 @@ export default {
     this.updateScrollBarState()
 
     window.addEventListener('resize', this.updateScrollBarState)
+    this.isMounted = true
   },
 
   components: {
@@ -94,6 +101,21 @@ html {
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
+}
+
+.main-container {
+  position: relative;
+}
+
+.red-bar.middle {
+  position: absolute;
+  left: 52%;
+}
+
+.red-bar.right {
+  position: absolute;
+  right: 0;
+  top: -6em;
 }
 
 .slide-enter-active, .slide-leave-active {

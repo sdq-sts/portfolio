@@ -65,9 +65,6 @@ export default {
       bodyAttrs: {
         class: !this.$store.state.bodyHasVScrollBar ? 'contact-page add-right-gap' : 'contact-page'
       }
-      // script: [
-      //   { src: 'https://cdn.emailjs.com/dist/email.min.js', type: 'text/javascript' }
-      // ]
     }
   },
 

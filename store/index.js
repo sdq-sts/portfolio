@@ -4,7 +4,8 @@ const store = () => {
   return new Vuex.Store({
     state: {
       route: null,
-      bodyHasVScrollBar: true
+      bodyHasVScrollBar: true,
+      showRedBar: true
     }
   })
 }

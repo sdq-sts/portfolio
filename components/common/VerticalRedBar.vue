@@ -1,5 +1,5 @@
 <template>
-  <div class="x">
+  <div class="red-bar">
     <div class="vertical-bar"></div>
   </div>
 </template>
@@ -11,11 +11,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.x {
-  position: absolute;
-  left: 52%;
-}
-
 .vertical-bar {
   width: 40em;
   height: 1em;
