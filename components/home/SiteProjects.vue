@@ -12,14 +12,12 @@
              cols="12" offset="0" 
              v-for="(project, index) in projects" :key="index">
         <div class="project">
-          <div class="project__overlay project-overlay" @click="openDetails">
-            <h2 class="project-overlay__title">{{ project.name }}</h2>
+          <div class="project__overlay project-overlay" @click="openDetails(index)">
+            <h2 class="project-overlay__title">{{ project.title }}</h2>
           </div>  
           <div class="project__thumb">
             <img :src="project.thumbSrc" :alt="project.alt">
           </div>
-
-          <project-details v-if="showProjectDetails"/>
         </div>
       </b-col>
 
@@ -28,27 +26,25 @@
 </template>
 
 <script>
-import WanderlustThumb from '~/assets/projects/wanderlust-thumb.jpg'
-import InTimeThumb from '~/assets/projects/in-time-thumb.jpg'
-import DotaQuotesThumb from '~/assets/projects/dota-quotes-thumb.jpg'
+import projects from './projects'
 
 export default {
   data () {
     return {
       showProjectDetails: false,
-      projects: [
-        { name: 'Wanderlust', thumbSrc: WanderlustThumb, alt: 'Site Wanderlust', detailsLink: '/projetos/wanderlust' },
-        { name: 'In time . Droeloe', thumbSrc: InTimeThumb, alt: 'Site In Time', detailsLink: '/projetos/in-time' },
-        { name: 'Dota Quotes', thumbSrc: DotaQuotesThumb, alt: 'Site Dota Quotes', detailsLink: '/projetos/dota-quotes' }
-      ]
+      projects
     }
   },
 
   methods: {
-    openDetails () {
-      let htmlStyle = document.documentElement.style
-      htmlStyle.overflowY = 'hidden'
-      this.$store.state.showProjectDetails = true
+    openDetails (index) {
+      const htmlClassList = document.documentElement.classList
+      setTimeout(() => { htmlClassList.add('no-overflow-y') }, 400)
+
+      this.$store.state.currentDetails = index
+      if (this.$store.state.currentDetails !== null) {
+        this.$store.state.showProjectDetails = true
+      }
     }
   }
 }

@@ -17,11 +17,11 @@
                 <a :href="details.linkOnline">Online</a>
                 <a :href="details.linkCode">Código</a>
               </div>
-              <div class="close-wrapper">
-                <span class="close-wrapper__btn" @click="closeProjectDetails"><icon name="chevron-left" scale=".5"/> Home</span>
-              </div>
             </footer>
           </section>
+          <div class="close-wrapper">
+            <span class="close-wrapper__btn" @click="closeProjectDetails"><icon name="chevron-left" scale=".5"/> Home</span>
+          </div>
         </div>
       </b-col>
     </b-row>
@@ -29,26 +29,14 @@
 </template>
 
 <script>
-import img1 from '~/assets/projects/wanderlust.jpg'
-
 export default {
-  data () {
-    return {
-      details: {
-        imgSrc: img1,
-        title: 'Wanderlust',
-        info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ante metus, tempor et tristique sit amet, bibendum nec augue. Praesent mattis in nisl eu laoreet. Duis vel arcu orci.',
-        linkOnline: 'http://sdq-wanderlust.surge.sh/',
-        linkCode: 'https://github.com/sdq-sts/site--wanderlust'
-      }
-    }
-  },
+  props: ['details'],
 
   methods: {
     closeProjectDetails () {
-      let htmlStyle = document.documentElement.style
+      const htmlClassList = document.documentElement.classList
       this.$store.state.showProjectDetails = false
-      htmlStyle.overflowY = 'auto'
+      htmlClassList.remove('no-overflow-y')
     }
   }
 }
@@ -78,6 +66,11 @@ export default {
 }
 
 .details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   &__title {
     text-align: center;
     color: #D71B14;
@@ -100,6 +93,7 @@ export default {
   min-height: 100vh;
   max-height: 100vh;
   align-items: center;
+  flex-direction: column;
 }
 
 .details-footer {
@@ -107,17 +101,18 @@ export default {
     display: flex;
     justify-content: space-around;
   }
+}
 
-  .close-wrapper {
-    text-align: center;
+.close-wrapper {
+  text-align: center;
+  margin-bottom: 2em;
 
-    &__btn {
-      cursor: pointer;
-      text-transform: uppercase;
-      font-size: .75em;
-      font-family: "Lato", sans-serif;
-      font-weight: 700;
-    }
+  &__btn {
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: .75em;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
   }
 }
 </style>

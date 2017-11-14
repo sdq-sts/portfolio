@@ -6,7 +6,8 @@ const store = () => {
       route: null,
       bodyHasVScrollBar: true,
       showRedBar: true,
-      showProjectDetails: false
+      showProjectDetails: false,
+      currentDetails: null
     }
   })
 }

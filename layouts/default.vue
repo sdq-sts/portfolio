@@ -4,7 +4,7 @@
       <site-video v-if="isIndex"/>
     </transition>
     <b-container class="main-container" id="top">
-      <transition-group name="grow" mode="out-in">
+      <transition-group name="fading-slide" mode="out-in">
         <vertical-red-bar v-if="isIndex" :class="{ middle: isIndex }" :key="'index-bar'"/>
         <vertical-red-bar v-else-if="!isIndex && isMounted" :class="{ right: !isIndex }" :key="'not-index-bar'"/>
       </transition-group>
@@ -12,11 +12,14 @@
       <site-logo/>
       <nuxt/>
     </b-container>
-    <project-details v-if="getProjectDetailsState()"/>
+    <transition name="details-transition" mode="out-in"> 
+      <project-details v-if="getProjectDetailsState()" :details="getCurrentDetails()"/>
+    </transition>
   </div>
 </template>
 
 <script>
+import projects from '~/components/home/projects'
 import VerticalRedBar from '~/components/common/VerticalRedBar'
 import SiteLogo from '~/components/common/SiteLogo'
 import SiteVideo from '~/components/home/SiteVideo'
@@ -50,17 +53,18 @@ export default {
 
     getProjectDetailsState () {
       return this.$store.state.showProjectDetails
+    },
+
+    getCurrentDetails () {
+      return projects[this.$store.state.currentDetails]
     }
   },
 
   mounted () {
     this.container = document.querySelector('.container')
-
     this.$store.state.route = this.$route.name
     this.isIndex = this.$route.name === 'index'
-
     this.updateScrollBarState()
-
     window.addEventListener('resize', this.updateScrollBarState)
     this.isMounted = true
   },
@@ -98,12 +102,15 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   overflow-x: hidden;
-  font-family: 'Lato', sans-serif;
 }
 
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
 }
 
 .main-container {
@@ -129,21 +136,29 @@ html {
   transform: translateX(101%);
 }
 
-.grow-enter-active, .grow-leave-active {
+.fading-slide-enter-active, .fading-slide-leave-active {
   transition: all .5s ease-in-out;
 }
 
-.grow-leave-active {
+.fading-slide-leave-active {
   transition: all .35s ease-in-out;
 }
 
-.grow-enter-active {
+.fading-slide-enter-active {
   transition: all .5s ease-in-out;
   transition-delay: .35s;
 }
 
-.grow-enter, .grow-leave-to {
+.fading-slide-enter, .fading-slide-leave-to {
   opacity: 0;
   transform: translateY(-3em);
+}
+
+// details-transition
+.details-transition-enter-active, .details-transition-leave-active {
+  transition: all .5s ease-in-out;
+}
+.details-transition-enter, .details-transition-leave-to {
+  transform: translateX(-101%);
 }
 </style>
